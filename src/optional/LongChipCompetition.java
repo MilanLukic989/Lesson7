@@ -6,12 +6,13 @@ import java.util.Random;
 public class LongChipCompetition {
 
 	/**
-	 * The Beatles are eating lunch and playing a game to see who has the longest chip. (In England, french fries are called "chips".)
+	 * The Beatles are eating lunch and playing a game to see who has the longest
+	 * chip. (In England, french fries are called "chips".)
 	 * 
-	 * Find the Beatle with the longest chip. You may not edit the Chip or Beatle classes. Make sure to initialize The Beatles before you start your
-	 * search.
+	 * Find the Beatle with the longest chip. You may not edit the Chip or Beatle
+	 * classes. Make sure to initialize The Beatles before you start your search.
 	 * 
-	 * **/
+	 **/
 
 	private ArrayList<Beatle> theBeatles = new ArrayList<Beatle>();
 
@@ -25,6 +26,38 @@ public class LongChipCompetition {
 		theBeatles.add(john);
 		theBeatles.add(paul);
 		theBeatles.add(ringo);
+	}
+
+		public static void main(String[] args) {
+			
+	  //ArrayList<Integer> lenght = new ArrayList<Integer>();
+		double longest = 0;
+		String name = "";
+		
+		LongChipCompetition competition = new LongChipCompetition();
+		competition.initializeBeatles();
+		
+		for(Beatle beatle : competition.theBeatles) {
+			
+			// all chips		
+			for(Chip chip : beatle.getChips()) {
+				if(chip.getLength() > longest) {
+					longest = chip.getLength();
+					name = beatle.getName();
+				}
+			}
+						
+			// one(first) chip per plate	
+			 		
+		/*	double chip = beatle.getChips().get(0).getLength();
+			if(chip > longest) {
+				longest = chip;
+				name = beatle.getName();
+		 } */
+
+		}
+		System.out.println("Longest chip: " + longest + " has: " + name);
+		
 	}
 }
 
@@ -41,7 +74,8 @@ class Beatle {
 		int numberOfChips = new Random().nextInt(100);
 		for (int i = 0; i < numberOfChips; i++) {
 			chips.add(new Chip(new Random().nextDouble() * 10));
-			if (this.name.contains("in")) chips.add(new Chip(10));
+			if (this.name.contains("in"))
+				chips.add(new Chip(10));
 		}
 	}
 
@@ -66,5 +100,3 @@ class Chip {
 		this.length = d;
 	}
 }
-
-
